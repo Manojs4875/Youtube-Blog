@@ -1,4 +1,4 @@
-const {schema}=require('mongoose');
+const {schema,model}=require('mongoose');
 const userSchema=new schema({
     name:{
         type:String,
@@ -23,4 +23,5 @@ const userSchema=new schema({
         default:"user"
     }
 });
-module.exports=userSchema;
+const user=model("user",userSchema);
+module.exports=user;
