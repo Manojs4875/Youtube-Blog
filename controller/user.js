@@ -1,26 +1,35 @@
-const user=require("./models/user.js")
+const {generateToken,verifyToken}=require("../service/authenication.js");
+const user=require("../models/user.js");
 const bcrypt=require("bcrypt");
 async function handlesignup(req,res){
     const {name,email,password,profile,role}=req.body;
-    const hashedpassword=await bcrypt.hash(password,10);
-    await user.create({
+    const salt=await bcrypt.genSalt(10);
+    const hashedpassword=await bcrypt.hash(password,salt);
+    const newUser=await user.create({
         name,
         email,
         password:hashedpassword,
         profile,
         role
     })
-    res.render('home');
+    // create a token for the user
+    const token=await generateToken(newUser);
+    
+    res.cookie("token",token);
+    return res.redirect('/');
 }
-
 async function handlelogin(req,res){
     const {email,password}=req.body;
     const userData=await user.findOne({email})
+    
     if(!userData){
-        return  res.status(400).send("User not found");}
+        return  res.render('login',{message:"User not found"})}
     const ismatch=await bcrypt.compare(password,userData.password);
     if(!ismatch){
-        return res.status(400).send("Invalid password");
+        return res.render('login',{message:"Invalid password"});
     }
-    res.render('home');}
+    
+    const token=await generateToken(userData);
+    res.cookie("token",token);
+    return res.redirect('/');}
     module.exports={handlesignup,handlelogin};

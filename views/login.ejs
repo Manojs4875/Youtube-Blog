@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youtube_blog</title>
+    <%- include('./partials/header') %>
+</head>
+<body>
+    <%- include('./partials/nav') %>
+    <%- include('./partials/script') %>
+
+<form action="/user/login" method="POST">
+    <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input
+        type="email"
+        class="form-control"
+        id="exampleInputEmail1"
+        name="email">
+    </div>
+    
+    <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input
+        type="password"
+        class="form-control"
+        id="exampleInputPassword1"
+        name="password">
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Submit</button>
+    </body>
+</html>
