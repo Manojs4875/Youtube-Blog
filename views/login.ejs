@@ -1,35 +1,39 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Youtube_blog</title>
-    <%- include('./partials/header') %>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | Blogify</title>
+  <%- include('./partials/header') %>
 </head>
 <body>
-    <%- include('./partials/nav') %>
-    <%- include('./partials/script') %>
-
-<form action="/user/login" method="POST">
-    <div class="mb-3">
-        <label class="form-label">Email</label>
-        <input
-        type="email"
-        class="form-control"
-        id="exampleInputEmail1"
-        name="email">
+  <%- include('./partials/nav') %>
+  <%- include('./partials/messages') %>
+  <main class="container py-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card shadow-sm">
+          <div class="card-body p-5">
+            <h2 class="mb-4 text-center">Welcome Back</h2>
+            <form action="/user/login" method="POST" novalidate>
+              <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-control" name="email" required>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Password</label>
+                <input type="password" class="form-control" name="password" required>
+              </div>
+              <button type="submit" class="btn btn-primary w-100">Sign in</button>
+            </form>
+            <p class="mt-3 text-center text-muted">
+              Don't have an account? <a href="/signup">Create one</a>
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
-    
-    <div class="mb-3">
-        <label class="form-label">Password</label>
-        <input
-        type="password"
-        class="form-control"
-        id="exampleInputPassword1"
-        name="password">
-    </div>
-    
-    <button type="submit" class="btn btn-primary">Submit</button>
-    </body>
+  </main>
+  <%- include('./partials/script') %>
+</body>
 </html>

@@ -1,13 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Youtube_blog</title>
-    <%- include('./partials/header') %>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home | Blogify</title>
+  <%- include('./partials/header') %>
 </head>
 <body>
-    <%- include('./partials/nav') %>
-    <%- include('./partials/script') %>
+  <%- include('./partials/nav') %>
+  <main class="container py-5">
+    <div class="hero-banner p-5 rounded-4 mb-5 shadow-sm">
+      <div class="row align-items-center">
+        <div class="col-lg-8">
+          <h1 class="display-5 fw-bold">Build, publish, and share your stories.</h1>
+          <p class="lead mt-3">Blogify helps you start writing, connect with your community, and keep your content easy to manage.</p>
+          <div class="mt-4">
+            <a href="/Allblogs" class="btn btn-light btn-lg me-2">Explore blogs</a>
+            <a href="/blog" class="btn btn-outline-light btn-lg">Create a blog</a>
+          </div>
+        </div>
+        <div class="col-lg-4 text-center mt-4 mt-lg-0">
+          <div class="card bg-white shadow-sm border-0">
+            <div class="card-body">
+              <h5 class="card-title">Logged in as</h5>
+              <p class="card-text fs-5 mb-1"><strong><%= user?.name %></strong></p>
+              <p class="text-muted mb-1"><%= user?.email %></p>
+              <p class="mb-0">Role: <strong><%= user?.role %></strong></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <%- include('./partials/script') %>
 </body>
+</html></body>
 </html>

@@ -1,6 +1,8 @@
-const router=require('express');
-const Router=router();
-const {handlesignup,handlelogin}=require('../controller/user.js');
-Router.post('/signup',handlesignup);
-Router.post('/login',handlelogin);
-module.exports=Router;
+const express = require('express');
+const router = express.Router();
+const { handlesignup, handlelogin } = require('../controller/user.js');
+
+router.post('/signup', handlesignup);
+router.post('/login', handlelogin);
+
+module.exports = router;

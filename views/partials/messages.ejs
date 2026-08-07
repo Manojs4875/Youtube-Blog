@@ -1,0 +1,8 @@
+<% if (message) { %>
+  <div class="container mt-4 alert-custom">
+    <div class="alert alert-<%= messageType || 'info' %> alert-dismissible fade show" role="alert">
+      <%= message %>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  </div>
+<% } %>
