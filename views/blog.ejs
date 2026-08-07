@@ -15,8 +15,15 @@
 
             <h2 class="mb-4 text-center">Create New Blog</h2>
 
-            <form action="/blog" method="POST">
-
+            <form action="/blog" method="POST" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label class="form-label">Cover Image URL</label>
+                    <input
+                        type="file"
+                        class="form-control"
+                        name="coverImageUrl"
+                        placeholder="Enter cover image URL (optional)">
+                </div>
                 <div class="mb-3">
                     <label class="form-label">Blog Title</label>
                     <input
@@ -31,7 +38,7 @@
                     <label class="form-label">Blog Content</label>
                     <textarea
                         class="form-control"
-                        name="body"
+                        name="content"
                         rows="10"
                         placeholder="Write your blog here..."
                         required></textarea>

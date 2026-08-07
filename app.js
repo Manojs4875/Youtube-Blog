@@ -4,11 +4,13 @@ const mongoose=require('mongoose');
 const path=require('path');
 const userRouter=require('./routes/user.js');
 const blogRouter=require('./routes/blog.js');
+const blog=require('./models/blog.js');
 const {checkforAuthentication}=require('./middleware/authentication.js');
 const cookieParser=require('cookie-parser');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use("/uploads", express.static("uploads"));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.get('/',checkforAuthentication,(req,res)=>{
@@ -35,6 +37,10 @@ app.get('/logout',(req,res)=>{
 });
 app.get('/blog',(req,res)=>{
     res.render('blog');
+});
+app.get('/Allblogs',checkforAuthentication,async (req,res)=>{
+    const blogs=await blog.find({});
+    res.render('Allblogs',{blogs});
 });
 app.use('/blog',blogRouter);
 app.use("/user",userRouter);

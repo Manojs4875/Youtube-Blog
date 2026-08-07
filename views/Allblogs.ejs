@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Blogs</title>
+     <%- include('./partials/header') %>
+</head>
+<body>
+    <%- include('./partials/nav') %>
+    <%- include('./partials/script') %>
+    <% for(let i=0;i<blogs.length;i++){ %>
+        <div class="card" style="width: 18rem;">
+            <img src="<%= blogs[i].coverImageUrl %>" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title"><%= blogs[i].title %></h5>
+                <p class="card-text"><%= blogs[i].content %></p>
+                
+            </div>
+        </div>
+    <% } %>
+</body>
+</html>
