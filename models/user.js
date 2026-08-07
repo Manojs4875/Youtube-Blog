@@ -15,7 +15,7 @@ const userSchema=new mongoose.Schema({
     },
     profile:{
         type:String,
-        default:"public/profile.png"
+        default:"/profile.jpg"
     },
     role:{
         type:String,
@@ -23,5 +23,5 @@ const userSchema=new mongoose.Schema({
         default:"user"
     }
 });
-const user=mongoose.model("user",userSchema);
+const user=mongoose.model("User",userSchema);
 module.exports=user;

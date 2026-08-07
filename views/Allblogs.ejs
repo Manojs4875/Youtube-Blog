@@ -9,15 +9,36 @@
 <body>
     <%- include('./partials/nav') %>
     <%- include('./partials/script') %>
-    <% for(let i=0;i<blogs.length;i++){ %>
-        <div class="card" style="width: 18rem;">
-            <img src="<%= blogs[i].coverImageUrl %>" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title"><%= blogs[i].title %></h5>
-                <p class="card-text"><%= blogs[i].content %></p>
-                
+    <div class="container mt-4">
+    <div class="row">
+
+        <% for(let i = 0; i < blogs.length; i++) { %>
+
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm">
+
+                    <% if(blogs[i].coverImageUrl){ %>
+                        <img src="<%= blogs[i].coverImageUrl %>" class="card-img-top" alt="Blog Image">
+                    <% } %>
+
+                    <div class="card-body">
+                        <h5 class="card-title"><%= blogs[i].title %></h5>
+
+                        <p class="card-text">
+                            <%= blogs[i].content.substring(0,120) %>...
+                        </p>
+
+                        <a href="/blog/<%= blogs[i]._id %>" class="btn btn-primary">
+                            Read More
+                        </a>
+                    </div>
+
+                </div>
             </div>
-        </div>
-    <% } %>
+
+        <% } %>
+
+    </div>
+</div>
 </body>
 </html>
